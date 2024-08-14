@@ -7,6 +7,21 @@ const playerMoveWinsAgainst = {
 let playerScore = 0;
 let cpuScore = 0;
 
+const rockBtn = document.querySelector("#rock")
+rockBtn.addEventListener("click", () => {
+    playRound("rock", getCPUChoice())
+})
+
+const paperBtn = document.querySelector("#paper")
+paperBtn.addEventListener("click", () => {
+    playRound("paper", getCPUChoice())
+})
+
+const scissorsBtn = document.querySelector("#scissors")
+scissorsBtn.addEventListener("click", () => {
+    playRound("scissors", getCPUChoice())
+})
+
 function getRandMove() {
     index = Math.floor(Math.random() * 3);
     return moves[index];
@@ -14,14 +29,6 @@ function getRandMove() {
 
 function getCPUChoice() {
     return getRandMove();
-}
-
-function getPlayerChoice() {
-    let move = ''   
-    while (!moves.includes(move)) {
-        move = window.prompt("Enter 'rock', 'paper', or 'scissors'").toLowerCase()
-    }
-    return move;
 }
 
 function displayScores() {
@@ -50,23 +57,23 @@ function playRound(playerMove, cpuMove) {
 }
 
 function playGame() {
-    for (let i = 1; i <= 5; i++) {
-        const playerChoice = getPlayerChoice();
-        console.log("=================================");
-        console.log(`Round ${i}`);
-        const cpuChoice = getCPUChoice();
-        playRound(playerChoice, cpuChoice)
-    }
-    console.log("=================================");
-    console.log("GAME OVER");
-    displayScores();
-    if (playerScore > cpuScore) {
-        console.log("Congratulations! You Win!");
-    } else if (playerScore < cpuScore) {
-        console.log("Sorry, the CPU wins.");
-    } else {
-        console.log("Wow its a tie!");
-    }
+    // for (let i = 1; i <= 5; i++) {
+    //     const playerChoice = ();
+    //     console.log("=================================");
+    //     console.log(`Round ${i}`);
+    //     const cpuChoice = getCPUChoice();
+    //     playRound(playerChoice, cpuChoice)
+    // }
+    // console.log("=================================");
+    // console.log("GAME OVER");
+    // displayScores();
+    // if (playerScore > cpuScore) {
+    //     console.log("Congratulations! You Win!");
+    // } else if (playerScore < cpuScore) {
+    //     console.log("Sorry, the CPU wins.");
+    // } else {
+    //     console.log("Wow its a tie!");
+    // }
 }
 
 playGame();
